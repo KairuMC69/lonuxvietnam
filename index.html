@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XIN LỖI BẠN VỀ VIỆC NÀY 😢</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lonux Studio</title>
+
+    <style>
+        /* Background Minecraft */
+        body {
+            margin: 0;
+            font-family: 'Trebuchet MS', sans-serif;
+            background: url("https://wallpapercave.com/wp/wp2757874.png") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        /* Overlay đen mờ giúp chữ nổi */
+        .overlay {
+            background: rgba(0,0,0,0.45);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Menu */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            font-size: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #5cc05c;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.4);
+            transition: 0.25s;
+        }
+        nav a:hover {
+            background: #5cc05c;
+            transform: scale(1.1);
+        }
+
+        /* Logo + Title */
+        .title-box {
+            margin-top: 40px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .logo {
+            width: 220px;
+            filter: drop-shadow(0 0 10px #000);
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-top: 10px;
+            text-shadow: 3px 3px 6px #000;
+        }
+
+        /* Nội dung */
+        .content-box {
+            width: 80%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(0,0,0,0.55);
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 22px;
+            line-height: 1.6;
+            animation: slideUp 1s ease;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.9);}
+            to {opacity: 1; transform: scale(1);}
+        }
+
+        @keyframes slideUp {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>XIN LỖI BẠN VỀ VIỆC NÀY 😢</h1>
-        <p>Chúng tôi hiện tại đang cố gắng hoàn thành trang Web sớm nhất có thể.</p>
+    <div class="overlay">
+
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+
+        <div class="title-box">
+            <img class="logo" 
+            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Minecraft_logo.png" 
+            alt="Minecraft Logo">
+
+            <h1>Chào mừng bạn đã đến với Lonux Studio</h1>
+        </div>
+
+        <div class="content-box">
+            Đây là nội dung.  
+            Bạn có thể thay đổi tùy ý phần nội dung này theo nhu cầu của bạn.
+            Mọi thứ đều hỗ trợ tiếng Việt và Minecraft UI phong cách cực đẹp.
+        </div>
+
     </div>
 </body>
 </html>
