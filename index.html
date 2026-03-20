@@ -1,44 +1,343 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lonux Studio</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Toàn Không Gian Mạng - THCS 2 Khánh Hải</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Background Minecraft */
+        /* Cài đặt màu sắc và font chữ chung */
+        :root {
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --accent-color: #00c6ff;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+        }
+
         body {
+            font-family: 'Be Vietnam Pro', sans-serif;
             margin: 0;
-            font-family: 'Trebuchet MS', sans-serif;
-            background: url("https://wallpapercave.com/wp/wp2757874.png") no-repeat center center fixed;
-            background-size: cover;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Phần Header Xanh dương hiện đại */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: white;
             text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 5px solid var(--accent-color);
         }
 
-        /* Overlay đen mờ giúp chữ nổi */
-        .overlay {
-            background: rgba(0,0,0,0.45);
-            min-height: 100vh;
-            padding: 0;
+        .school-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #e0f7fa;
         }
 
-        /* Menu */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            font-size: 20px;
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        nav a {
-            text-decoration: none;
-            color: #fff;
+
+        /* Container chứa nội dung */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Style cho các mục nội dung (Card) */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-blue);
+        }
+
+        /* Khu vực để anh chép text vào */
+        .content-box {
+            background: #f9fbfd;
+            border: 1px solid #e1e8ed;
+            padding: 15px;
+            border-radius: 8px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Style cho phần Trắc nghiệm */
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .question p {
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        .quiz-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .quiz-btn:hover:not(:disabled) {
+            background: #e3f2fd;
+            border-color: var(--primary-blue);
+        }
+
+        /* Nút đúng / sai */
+        .correct {
+            background: #d4edda !important;
+            color: #155724 !important;
+            border-color: #c3e6cb !important;
             font-weight: bold;
-            padding: 10px 20px;
-            border: 2px solid #5cc05c;
-            border-radius: 10px;
-            background: rgba(0,0,0,0.4);
+        }
+
+        .wrong {
+            background: #f8d7da !important;
+            color: #721c24 !important;
+            border-color: #f5c6cb !important;
+        }
+
+        /* Ô nhập văn bản câu 5 */
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .submit-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #112240;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #a8b2d1;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links p {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 28px;
+            margin: 0 15px;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover.fa-youtube { color: #ff0000; }
+        .social-icons a:hover.fa-tiktok { color: #00f2fe; }
+        .social-icons a:hover.fa-facebook { color: #1877f2; }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 600px) {
+            .main-title { font-size: 1.5rem; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="school-name">Trường THCS 2 Khánh Hải</div>
+        <h1 class="main-title">Chung tay xây dựng môi trường an toàn trên Không gian mạng tại địa phương.</h1>
+    </header>
+
+    <div class="container">
+        <section id="thong-tin">
+            <h2>I. Thông tin</h2>
+            <div class="content-box">
+                <p>[Anh xóa dòng này và chép nội dung phần Thông tin vào đây nha...]</p>
+            </div>
+        </section>
+
+        <section id="thuc-trang">
+            <h2>II. Thực trạng trên Không gian mạng tại địa phương và biện pháp phòng chống.</h2>
+            <div class="content-box" style="margin-bottom: 20px;">
+                <p>[Anh dán nội dung phần Thực trạng vào đây...]</p>
+            </div>
+
+            <h3>Biện pháp phòng chống an toàn trên Không gian mạng</h3>
+            <div class="content-box">
+                <p>[Anh dán nội dung phần Biện pháp phòng chống vào đây...]</p>
+            </div>
+        </section>
+
+        <section id="truyen-ngan">
+            <h2>III. Truyện ngắn</h2>
+            <div class="content-box">
+                <p>[Anh dán nội dung Truyện ngắn vào đây...]</p>
+            </div>
+        </section>
+
+        <section id="tra-loi-cau-hoi">
+            <h2>IV. Trả lời câu hỏi</h2>
+
+            <div class="question">
+                <p>Câu 1: Tội phạm không gian mạng là gì?</p>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">A. Hoạt động giải trí trên mạng</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, true)" data-correct="true">B. Hành vi vi phạm pháp luật qua internet</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">C. Học tập trực tuyến</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">D. Trò chuyện với bạn bè</button>
+            </div>
+
+            <div class="question">
+                <p>Câu 2: Hành vi nào KHÔNG an toàn khi dùng internet?</p>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">A. Giữ bí mật mật khẩu</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">B. Kiểm tra thông tin trước khi tin</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, true)" data-correct="true">C. Nhấp vào đường link lạ</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">D. Cài bảo mật hai lớp</button>
+            </div>
+
+            <div class="question">
+                <p>Câu 3: Hoạt động nào giúp xây dựng mạng an toàn?</p>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">A. Chia sẻ tin giả</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, true)" data-correct="true">B. Tuyên truyền sử dụng internet an toàn</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">C. Tiết lộ thông tin cá nhân</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">D. Bỏ qua cảnh báo</button>
+            </div>
+
+            <div class="question">
+                <p>Câu 4: Ý nghĩa của việc xây dựng không gian mạng an toàn là gì?</p>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">A. Tăng thời gian dùng mạng</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">B. Làm internet thú vị hơn</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, true)" data-correct="true">C. Bảo vệ người dùng và cộng đồng</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">D. Giảm số người dùng</button>
+            </div>
+
+            <div class="question">
+                <p>Câu 5 (Tự trả lời): Theo bạn, cần làm gì để góp phần xây dựng không gian mạng an toàn tại địa phương?</p>
+                <textarea id="q5-answer" placeholder="Nhập câu trả lời của bạn vào đây..."></textarea>
+                <button class="submit-btn" onclick="submitText()">Gửi câu trả lời</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-quote">
+            "Vì một môi trường an toàn trên Không gian mạng , luôn tỉnh táo khi tham gia môi trường mạng"
+        </div>
+        <div class="social-links">
+            <p>Các diễn đàn :</p>
+            <div class="social-icons">
+                <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkAnswer(btn, isCorrect) {
+            // Lấy div chứa câu hỏi hiện tại
+            const questionDiv = btn.closest('.question');
+            // Tìm tất cả các nút đáp án trong câu hỏi đó
+            const allButtons = questionDiv.querySelectorAll('.quiz-btn');
+            
+            // Khóa tất cả các nút để không cho chọn lại
+            allButtons.forEach(b => {
+                b.disabled = true;
+                b.style.cursor = 'not-allowed';
+                
+                // Luôn hiển thị đáp án đúng (màu xanh)
+                if (b.dataset.correct === "true") {
+                    b.classList.add('correct');
+                }
+            });
+
+            // Nếu nút bấm là sai thì tô màu đỏ cho nút đó
+            if (!isCorrect) {
+                btn.classList.add('wrong');
+            }
+        }
+
+        function submitText() {
+            const answer = document.getElementById('q5-answer').value;
+            if(answer.trim() === "") {
+                alert("Bạn chưa nhập câu trả lời kìa!");
+            } else {
+                alert("Cảm ơn bạn! Ý kiến của bạn đã được ghi nhận.");
+                document.getElementById('q5-answer').value = ""; // Xóa nội dung sau khi gửi
+            }
+        }
+    </script>
+</body>
+</html>
             transition: 0.25s;
         }
         nav a:hover {
